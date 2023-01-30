@@ -13,7 +13,7 @@
             //i. we will need to find another api for tournament data.
     //3. TODO: look into other needed apis to filling in gaps where needed
 //TODO: set up gatherer like query bars where each potential query item is in its own search bar
-    //1. maybe use a for loop to make the search bars based on an array of potential query items.
+    //1. maybe use a for loop to make the search bars in a form based on an array of potential query items.
     //2. have each search bar save the query with its associated search param into a variable that will be added to the fetch.
 
 
@@ -31,6 +31,7 @@ searchBar.on('keydown', (e) => {
     if(key === 13){
         console.log('pressed enter')
         initialFetch(searchBar.val());
+        console.log(searchBar.val());
         searchBar.val('');
     }
 })
@@ -48,15 +49,34 @@ const initialFetch = (query) => {
             return res.json();
         })
         .then((data) => {
-            results.concat(data);
-            if(data.length === 100){
+            console.log(data);
+            results = results.concat(data.cards);
+            if(data.cards.length === 100){
                 pageNum++;
                 initialFetch(query);
+                return;
             } else {
                 pageNum = 1;
                 console.log(results);
+                separateResults(results);
+                results = [];
+                return;
             }
         })
+}
+
+const separateResults = (arr) => {
+    const intoSets = arr.map((card) => card.setName);
+    const setNames = intoSets.filter((set, i) => intoSets.indexOf(set) === i);
+    const numberOfSets = setNames.length
+
+    for (let i = 0; i < numberOfSets; i++) {
+        const set = {
+            name: `${setNames[i]}`,
+            cards: arr.filter((card) => card.setName === setNames[i]),
+        }
+        console.log(set);
+    }
 }
 
 //initialFetch();
