@@ -5,3 +5,9 @@
 body {
     background-color: var(--depths-color);
 }
+
+header {
+    color: black;
+    display: flex;
+    justify-content: center;
+}
