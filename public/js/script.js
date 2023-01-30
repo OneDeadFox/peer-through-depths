@@ -15,6 +15,7 @@
 //TODO: set up gatherer like query bars where each potential query item is in its own search bar
     //1. maybe use a for loop to make the search bars in a form based on an array of potential query items.
     //2. have each search bar save the query with its associated search param into a variable that will be added to the fetch.
+//TODO: switch fetch to scryfall
 
 
 //Global Variables========================================================
@@ -76,7 +77,30 @@ const separateResults = (arr) => {
             cards: arr.filter((card) => card.setName === setNames[i]),
         }
         console.log(set);
+        //localStorage.setItem(`set${i}`, JSON.stringify(set));
+        filterResults(set);
     }
 }
 
+const filterResults = (obj) => {
+    const {cards} = obj;
+    let removalCount = 0;
+    //make a function for findIndex
+    console.log(cards);
+    for (let i = 0; i < cards.length; i++) {
+        for (let ii = i + 1; ii < cards.length - 1; ii++) {
+            const comparedCard = cards[ii];
+            if(cards[i].name === cards[ii].name){
+                removalCount++;
+                cards.splice(ii,1);
+            }
+        }
+    }
+    console.log(`removal count: ` + removalCount);
+    console.log(cards);
+    //cards.filter((card, i) => card.indexOf(card.name) === i );
+}
+
+const set = JSON.parse(localStorage.getItem(`set0`));
+filterResults(set);
 //initialFetch();
