@@ -22,7 +22,6 @@
 //const fs = require('fs');
 
 const searchBar = $('.search-bar');
-
 let pageNum = 1;
 let results = [];
 
