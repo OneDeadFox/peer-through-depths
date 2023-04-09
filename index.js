@@ -3,7 +3,7 @@ const app = express();
 require('dotenv').config();
 const allRoutes = require('./controllers');
 const cors = require('cors');
-const sequalize = require('./config/connection');
+const sequelize = require('./config/connection');
 
 const PORT = process.env.PORT || 3030;
 
@@ -20,7 +20,7 @@ app.get("/*", (req, res) => {
     res.send("Failed to find");
 });
 
-sequalize.sync({force: false}).then(function() {
+sequelize.sync({force: true}).then(function() {
     app.listen(PORT, function() {
         console.log('App is listening to some dope tunes by Deltron ' + PORT);
     });

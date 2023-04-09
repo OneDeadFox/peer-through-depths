@@ -1,12 +1,24 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class  extends Model { }
+class Style extends Model { }
 
-.init({
-
+Style.init({
+    tcgId: {
+        type: DataTypes.STRING,
+    },
+    cardMarketId: {
+        type: DataTypes.STRING,
+    },
+    finish: {
+        type: DataTypes.STRING,
+    },
+    latout: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
-    sequalize
+    sequelize
 });
 
-module.exports = 
+module.exports = Style

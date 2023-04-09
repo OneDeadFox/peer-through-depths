@@ -1,23 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Set extends Model { }
+class Tag extends Model { }
 
-Set.init({
-    set: {
+Tag.init({
+    tagName: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
-    setName: {
+    description: {
         type: DataTypes.STRING,
-        allowNull: false,
-    },
-    setType: {
-        type: DataTypes.STRING,
-        allowNull: false,
     },
 }, {
     sequelize
 });
 
-module.exports = Set
+module.exports = Tag
