@@ -1,7 +1,7 @@
 //console.log('Cool name, but that card kind of sucks'); -Console log easter egg?
 
 // Set up fetch to the magicthegathering.io api
-    //1. report any error and potential roadblocks
+    //1. report any err and potential roadblocks
         //a. potential roadblock is that the maximun array size is 100
     //2. review data that is retrieved from fetch
         //a. how is it structured?
