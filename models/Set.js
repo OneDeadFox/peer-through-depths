@@ -17,7 +17,7 @@ Set.init({
         allowNull: false,
     },
 }, {
-    sequalize
+    sequelize
 });
 
 module.exports = Set

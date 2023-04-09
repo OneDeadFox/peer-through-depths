@@ -29,7 +29,7 @@ Language.init({
         type: DataTypes.DECIMAL,
     },
 }, {
-    sequalize
+    sequelize
 });
 
 module.exports = Language

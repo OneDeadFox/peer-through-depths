@@ -13,7 +13,7 @@ Tag.init({
         type: DataTypes.STRING,
     },
 }, {
-    sequalize
+    sequelize
 });
 
 module.exports = Tag

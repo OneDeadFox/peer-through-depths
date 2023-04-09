@@ -18,7 +18,7 @@ Style.init({
         allowNull: false,
     },
 }, {
-    sequalize
+    sequelize
 });
 
 module.exports = Style
