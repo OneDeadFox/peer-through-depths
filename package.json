@@ -1,7 +1,7 @@
 {
   "name": "peer_through_deptgs",
   "version": "1.0.0",
-  "description": "a social network designed for and by gamers",
+  "description": "a new approach to MTG deck building and card designing",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maximusDecimalusMeridius/gamerPad.git"
+    "url": "git+https://github.com/OneDeadFox/peer-through-depths.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maximusDecimalusMeridius/gamerPad/issues"
+    "url": "https://github.com/OneDeadFox/peer-through-depths/issues"
   },
-  "homepage": "https://github.com/maximusDecimalusMeridius/gamerPad#readme",
+  "homepage": "https://github.com/OneDeadFox/peer-through-depths#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",

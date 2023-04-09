@@ -1,23 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Deck extends Model { }
+class Tag extends Model { }
 
-Deck.init({
-    powerLevel: {
-        type: DataTypes.INTEGER
-    },
-    rating: {
-        type: DataTypes.INTEGER,
+Tag.init({
+    tagName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
     },
     description: {
-        type: DataTypes.STRING,
-    },
-    tags: {
         type: DataTypes.STRING,
     },
 }, {
     sequalize
 });
 
-module.exports = Deck
+module.exports = Tag

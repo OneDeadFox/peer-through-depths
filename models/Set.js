@@ -1,12 +1,23 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class  extends Model { }
+class Set extends Model { }
 
-.init({
-
+Set.init({
+    set: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    setName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    setType: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
     sequalize
 });
 
-module.exports = 
+module.exports = Set
