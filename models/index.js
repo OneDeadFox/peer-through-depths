@@ -20,14 +20,14 @@ Card.hasMany(Variation);
 Variation.belongsTo(Card);
 
 //Card Many to Many Relationships
-Card.belongsToMany(Deck , {though: "CardDeck"});
-Deck.belongsToMany(Card , {though: "CardDeck"});
-Card.belongsToMany(Set , {though: "CardSet"});
-Set.belongsToMany(Card , {though: "CardSet"});
-Card.belongsToMany(Tag , {though: "CardTag"});
-Tag.belongsToMany(Card , {though: "CardTag"});
-Card.belongsToMany(User , {though: "UserCard"});
-User.belongsToMany(Card , {though: "UserCard"});
+Card.belongsToMany(Deck , {through: "CardDeck"});
+Deck.belongsToMany(Card , {through: "CardDeck"});
+Card.belongsToMany(Set , {through: "CardSet"});
+Set.belongsToMany(Card , {through: "CardSet"});
+Card.belongsToMany(Tag , {through: "CardTag"});
+Tag.belongsToMany(Card , {through: "CardTag"});
+Card.belongsToMany(User , {through: "UserCard"});
+User.belongsToMany(Card , {through: "UserCard"});
 
 //User Relationship
 User.hasMany(Deck);
