@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 
-//GET all user records
+//GET all users
 router.get("/", async (req, res) => {
     try {
         const allUsers = await User.findAll();
@@ -45,7 +45,7 @@ router.get("/currentUser", async (req, res) => {
     }
 });
 
-//GET one user records
+//GET one user
 router.get("/:id", async (req, res) => {
     try {
         const user = await User.findByPk(req.params.id, {
@@ -64,7 +64,6 @@ router.get("/:id", async (req, res) => {
 
 //POST a new user
 router.post("/", async (req, res) => {
-
     try {
         const newUser = await User.create(
             req.body
@@ -100,7 +99,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-//PUT an existing user
+//PUT - update an existing user
 router.put("/:id", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 

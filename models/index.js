@@ -34,8 +34,8 @@ User.hasMany(Deck);
 Deck.belongsTo(User);
 
 //Tag Self Relationship
-Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Tag', foreignKey: 'AssociationId', otherKey: 'TagId'});
-Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey: 'TagId', otherKey:'AssociationId'});
+Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey: 'AssociationId', otherKey: 'TagId'});
+Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Tag', foreignKey: 'TagId', otherKey:'AssociationId'});
 
 module.exports = {
     Card,
