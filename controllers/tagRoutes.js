@@ -1,18 +1,21 @@
+//this route will eventually need to have admin access
+
 const express = require('express');
 const router = express.Router();
 const {Tag, TagAssociation} = require('../models');
-const jwt = require('jsonwebtoken');
-const { associations } = require('../models/Card');
 
 //GET all tags
 router.get("/", async (req, res) => {
     try {
         const allTags = await Tag.findAll();
 
-        res.json(allUsers);
+        res.json(allTags);
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
@@ -34,10 +37,19 @@ router.get("/:id", async (req, res) => {
             ]
         });
 
-        res.json(tag);
+        if (tag) {
+            return res.json(tag);
+        } else {
+            res.status(404).json({
+                msg: 'Failed to find this tag.'
+            });
+        }
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
@@ -49,7 +61,10 @@ router.post("/", async (req, res) => {
         res.json(newTag);
     } catch(err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
@@ -64,18 +79,21 @@ router.put(`/:id`, async (req, res) => {
             }
         );
         if (!updateTag) {
-            return res.status(404).json({ msg: 'Failed to find this user.' });
+            return res.status(404).json({ msg: 'Failed to find tag.'});
         } else {
             return res.json(updateTag);
         }
     } catch(err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
 //DELETE an existing tag
-router.put(`/:id`, async (req, res) => {
+router.delete(`/:id`, async (req, res) => {
     try {
         const deleteTag = await Tag.destroy(
             {
@@ -85,13 +103,16 @@ router.put(`/:id`, async (req, res) => {
             }
         );
         if (!deleteTag) {
-            return res.status(404).json({ msg: 'Failed to find this user.' });
+            return res.status(404).json({ msg: 'Failed to find tag.'});
         } else {
             return res.json(deleteTag);
         }
     } catch(err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 

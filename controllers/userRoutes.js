@@ -13,35 +13,42 @@ router.get("/", async (req, res) => {
         res.json(allUsers);
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
 //GET current user
 router.get("/currentUser", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
+    
     if (!token) {
-        return res.status(403).json({ msg: 'You must be logged into an account to get current user data.' });
+        return res.status(403).json({ msg: 'You must be logged into an account to get current user data.'});
     }
     try {
         const tokenData = jwt.verify(token, process.env.JWT_SECRET);
-        const results = await User.findByPk(tokenData.id, {
+        const user = await User.findByPk(tokenData.id, {
             include:[
                 {model: Card},
                 {model: Deck}
             ]
         });
 
-        if (results) {
-            return res.json(results);
+        if (user) {
+            return res.json(user);
         } else {
             res.status(404).json({
-                message: 'Failed to find current user data.'
+                msg: 'Failed to find current user data.'
             });
         }
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
@@ -55,10 +62,19 @@ router.get("/:id", async (req, res) => {
             ]
         });
 
-        res.json(user);
+        if (user) {
+            return res.json(user);
+        } else {
+            res.status(404).json({
+                msg: 'Failed to find this user.'
+            });
+        }
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to find the way.' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
@@ -95,7 +111,10 @@ router.post("/", async (req, res) => {
         );
     } catch(err) {
         console.log(err);
-        res.status(500).json({msg: 'Your attempt to cast a new user has been countered.'});
+        res.status(500).json({
+            msg: 'Your attempt to cast a new user has been countered.',
+            err
+        });
     }
 });
 
@@ -104,7 +123,7 @@ router.put("/:id", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
-        return res.status(403).json({ msg: 'You must be logged in to update user data' });
+        return res.status(403).json({ msg: 'You must be logged in to update user data'});
     }
 
     try {
@@ -112,10 +131,10 @@ router.put("/:id", async (req, res) => {
         const currentUser = await User.findByPk(req.params.id);
 
         if (!currentUser) {
-            return res.status(404).json({ msg: 'Failed to find this user.' });
+            return res.status(404).json({ msg: 'Failed to find this user.'});
         }
         if (currentUser.id !== tokenData.id) {
-            return res.status(403).json({ msg: 'You can only update the user whom is logged in.' });
+            return res.status(403).json({ msg: 'You can only update the user whom is logged in.'});
         } else {
             const updatedUser = await User.update(req.body, {
                 where: {
@@ -127,7 +146,10 @@ router.put("/:id", async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to update this user' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 })
 
@@ -136,17 +158,17 @@ router.delete("/:id", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
-        return res.status(403).json({ msg: 'You must be logged in to delete a user' });
+        return res.status(403).json({ msg: 'You must be logged in to delete a user'});
     }
     try {
         const tokenData = jwt.verify(token, process.env.JWT_SECRET);
         const currentUser = await User.findByPk(req.params.id)
 
         if (!currentUser) {
-            return res.status(404).json({ msg: 'Failed to find this user' });
+            return res.status(404).json({ msg: 'Failed to find this user'});
         }
         if (currentUser.id !== tokenData.id) {
-            return res.status(403).json({ msg: 'You can only delete the user whom is logged in.' });
+            return res.status(403).json({ msg: 'You can only delete the user whom is logged in.'});
         } else {
             const results = await User.destroy({
                 where: {
@@ -158,7 +180,10 @@ router.delete("/:id", async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Failed to update this user' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
@@ -178,9 +203,9 @@ router.post("/login", async (req, res) => {
         )
 
         if (!currentUser) {
-            return res.status(401).json({ msg: 'Incorrect mana to login.' });
+            return res.status(401).json({ msg: 'Incorrect mana to login.'});
         } else if (!bcrypt.compareSync(req.body.password, currentUser.password)) {
-            return res.status(401).json({ msg: 'Incorrect mana to login.' });
+            return res.status(401).json({ msg: 'Incorrect mana to login.'});
         } else {
             const token = jwt.sign(
                 {
@@ -201,7 +226,10 @@ router.post("/login", async (req, res) => {
 
     } catch (err) {
         console.log(err);
-        res.status(500).json({ msg: 'Failed to login' });
+        res.status(500).json({ 
+            msg: 'Failed to find the way.',
+            err
+        });
     }
 });
 
