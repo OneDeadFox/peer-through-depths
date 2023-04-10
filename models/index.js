@@ -52,5 +52,6 @@ module.exports = {
     Tag,
     TagAssociation,
     User,
+    UserCard,
     Variation
 }

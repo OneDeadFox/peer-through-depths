@@ -1,5 +1,5 @@
 const express = require('express');
-const {User, Card, Deck} = require('../models');
+const {User, Card, Deck, UserCard} = require('../models');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -31,7 +31,7 @@ router.get("/currentUser", async (req, res) => {
         const tokenData = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findByPk(tokenData.id, {
             include:[
-                {model: Card},
+                {model: UserCard},
                 {model: Deck}
             ]
         });
@@ -57,7 +57,7 @@ router.get("/:id", async (req, res) => {
     try {
         const user = await User.findByPk(req.params.id, {
             include:[
-                {model: Card},
+                {model: UserCard},
                 {model: Deck}
             ]
         });
@@ -81,16 +81,7 @@ router.get("/:id", async (req, res) => {
 //POST a new user
 router.post("/", async (req, res) => {
     try {
-        const newUser = await User.create(
-            req.body
-            // {
-            //     username: req.body.username,
-            //     email: req.body.email,
-            //     password: req.body.password,
-            //     theme: req.body.theme,
-            //     profilePicture: req.body.profilePicture,
-            // }
-        );
+        const newUser = await User.create(req.body);
 
         const token = jwt.sign(
             {
