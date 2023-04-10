@@ -49,10 +49,6 @@ Card.init({
     tags: {
         type: DataTypes.STRING,
     },
-    //user added tags if this becomes a feature
-    tempTags: {
-        type: DataTypes.STRING,
-    },
     keywords: {
         type: DataTypes.STRING,
     },

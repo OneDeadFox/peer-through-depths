@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {Deck} = require('../models');
+const {Deck, UserCard} = require('../models');
 const jwt = require('jsonwebtoken');
 
 //GET all decks
@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
         const deck = await Deck.findByPk(req.params.id, {
             include:[
                 {
-                    model: Card,
+                    model: UserCard,
                 }
             ]
         });
