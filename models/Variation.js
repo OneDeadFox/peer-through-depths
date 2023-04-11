@@ -57,6 +57,12 @@ Variation.init({
     frame: {
         type: DataTypes.STRING,
     },
+    finish: {
+        type: DataTypes.STRING,
+    },
+    layout: {
+        type: DataTypes.STRING,
+    },
     fullArt: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -73,8 +79,17 @@ Variation.init({
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    language: {
+        type: DataTypes.STRING,
+    },
+    releaseDate: {
+        type: DataTypes.DATE,
+    },
+    imageUris: {
+        type: DataTypes.STRING,
+    },
     price: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(10, 2),
     },
 }, {
     sequelize

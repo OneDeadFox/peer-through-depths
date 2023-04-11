@@ -40,8 +40,8 @@ const seedAll = async () => {
     await seedStatuses();
     console.log("\n----- STATUSES SEEDED -----\n");
     
-    // await seedStyles();
-    // console.log("\n----- STYLES SEEDED -----\n");
+    await seedStyles();
+    console.log("\n----- STYLES SEEDED -----\n");
     
     await seedVariations();
     console.log("\n----- VARIATIONS SEEDED -----\n");
@@ -49,8 +49,8 @@ const seedAll = async () => {
     await seedUserCards();
     console.log("\n----- USERCARDS SEEDED -----\n");
     
-    // await seedTagAssociations();
-    // console.log("\n----- TAGASSOCIATIONS SEEDED -----\n");
+    await seedTagAssociations();
+    console.log("\n----- TAGASSOCIATIONS SEEDED -----\n");
 
     process.exit(0);
 }

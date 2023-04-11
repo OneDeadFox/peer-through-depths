@@ -34,7 +34,7 @@ Deck.belongsTo(User);
 User.hasMany(UserCard);
 UserCard.belongsTo(User)
 
-//Deck and UserCard Relationship
+//Deck and UserCard Relationships
 Deck.belongsToMany(UserCard , {through: "DeckCard"});
 UserCard.belongsToMany(Deck , {through: "DeckCard"});
 Deck.belongsToMany(Tag , {through: "DeckTag"});
@@ -48,7 +48,11 @@ Tag.belongsToMany(UserCard , {through: "UserCardTag"});
 Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey: 'AssociationId', otherKey: 'TagId'});
 Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Tag', foreignKey: 'TagId', otherKey:'AssociationId'});
 
-
+//Variation Relationships
+Variation.belongsTo(Language);
+Language.hasMany(Variation);
+Variation.belongsTo(Style);
+Style.hasMany(Variation);
 
 module.exports = {
     Card,

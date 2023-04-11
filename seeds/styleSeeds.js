@@ -1,9 +1,29 @@
-const {X} = require('../models');
+const {Style} = require('../models');
 
-const yData = [
-    
+const styleData = [
+    {
+        // tcgId: "45776",
+        // cardMarketId: "12789",
+        finish: "standard",
+        layout: "standard",
+        CardId: 1,
+    },
+    {
+        // tcgId: "45876",
+        // cardMarketId: "56789",
+        finish: "foil",
+        layout: "standard",
+        CardId: 1,
+    },
+    // {
+    //     tcgId: "456",
+    //     cardMarketId: "789",
+    //     finish: "standard",
+    //     layout: "standard",
+    //     CardId: 1,
+    // },
 ]
 
-const seedX = () => X.bulkCreate(yData);
+const seedStyle = () => Style.bulkCreate(styleData);
 
-module.exports = seedX;
+module.exports = seedStyle;
