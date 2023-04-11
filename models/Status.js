@@ -6,20 +6,32 @@ class Status extends Model { }
 Status.init({
     legalities: {
         type: DataTypes.STRING,
+        get() {
+            return this.getDataValue('legalities').split(',')
+        },
+        set(val) {
+            this.setDataValue('legalities',val.join(','));
+        },
     },
-    isToken: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-    },
-    game: {
+    games: {
         type: DataTypes.STRING,
+        get() {
+            return this.getDataValue('games').split(',')
+        },
+        set(val) {
+            this.setDataValue('games',val.join(','));
+        },
     },
     edhrecRank: {
         type: DataTypes.INTEGER,
     },
     edhrecUri: {
         type: DataTypes.STRING,
-    }
+    },
+    isToken: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
 }, {
     sequelize
 });
