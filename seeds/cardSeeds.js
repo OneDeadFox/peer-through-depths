@@ -63,6 +63,8 @@ const seedCards = async () => {
 
     await cardseeds[0].addTag(1);
     await cardseeds[1].addTag(2);
+    await cardseeds[0].addSet(1);
+    await cardseeds[1].addSet(2);
 }
 
 module.exports = seedCards;

@@ -8,6 +8,7 @@ const seedDeck =  async () => {
             rating: 3,
             description: "Mid-range madness deck",
             tags: "Madness, Discard",
+            UserId: "1"
         },
         {
             name: "Hippity Hoppity",
@@ -15,6 +16,7 @@ const seedDeck =  async () => {
             rating: 4,
             description: "Competitive leaning blue control",
             tags: "TYS-Creature, Spell-Countering",
+            UserId: "2"
         },
         // {
         //     name: "",
@@ -22,6 +24,7 @@ const seedDeck =  async () => {
         //     rating: 1,
         //     description: "",
         //     tags: "",
+        //     UserId: "",
         // },
     ]);
 

@@ -19,12 +19,15 @@ const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log("\n----- DATABASE SYNCED -----\n");
     
-    // await seedUsers();
-    // console.log("\n----- USERS SEEDED -----\n");
+    await seedUsers();
+    console.log("\n----- USERS SEEDED -----\n");
 
     await seedTags();
     console.log("\n----- TAGS SEEDED -----\n");
-
+    
+    await seedSets();
+    console.log("\n----- SETS SEEDED -----\n");
+    
     await seedCards();
     console.log("\n----- CARDS SEEDED -----\n");
 
@@ -33,9 +36,6 @@ const seedAll = async () => {
 
     // await seedLanguages();
     // console.log("\n----- LANGUAGES SEEDED -----\n");
-    
-    // await seedSets();
-    // console.log("\n----- SETS SEEDED -----\n");
     
     await seedStatuses();
     console.log("\n----- STATUSES SEEDED -----\n");

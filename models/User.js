@@ -14,6 +14,7 @@ User.init({
             len: [3,20]
         }
     },
+    //add validator
     email: {
         type: DataTypes.STRING,
         allowNull: false,
