@@ -22,14 +22,14 @@ const seedAll = async () => {
     // await seedUsers();
     // console.log("\n----- USERS SEEDED -----\n");
 
+    await seedTags();
+    console.log("\n----- TAGS SEEDED -----\n");
+
     await seedCards();
     console.log("\n----- CARDS SEEDED -----\n");
 
-    // await seedDecks();
-    // console.log("\n----- DECKS SEEDED -----\n");
-
-    // await seedTags();
-    // console.log("\n----- TAGS SEEDED -----\n");
+    await seedDecks();
+    console.log("\n----- DECKS SEEDED -----\n");
 
     // await seedLanguages();
     // console.log("\n----- LANGUAGES SEEDED -----\n");

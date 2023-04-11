@@ -37,6 +37,8 @@ UserCard.belongsTo(User)
 //Deck and UserCard Relationship
 Deck.belongsToMany(UserCard , {through: "DeckCard"});
 UserCard.belongsToMany(Deck , {through: "DeckCard"});
+Deck.belongsToMany(Tag , {through: "DeckTag"});
+Tag.belongsToMany(Deck , {through: "DeckTag"});
 
 //Tag Self Relationship
 Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey: 'AssociationId', otherKey: 'TagId'});
