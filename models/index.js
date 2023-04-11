@@ -7,6 +7,7 @@ const Style  = require('./Style');
 const Tag = require('./Tag');
 const TagAssociation = require('./TagAssociation');
 const User = require('./User');
+const UserCard = require('./UserCard');
 const Variation = require('./Variation');
 
 //Card One to Many Relationship
@@ -18,24 +19,28 @@ Card.hasMany(Status);
 Status.belongsTo(Card);
 Card.hasMany(Variation);
 Variation.belongsTo(Card);
+Card.hasMany(UserCard);
+UserCard.belongsTo(Card)
 
 //Card Many to Many Relationships
-Card.belongsToMany(Deck , {though: "CardDeck"});
-Deck.belongsToMany(Card , {though: "CardDeck"});
-Card.belongsToMany(Set , {though: "CardSet"});
-Set.belongsToMany(Card , {though: "CardSet"});
-Card.belongsToMany(Tag , {though: "CardTag"});
-Tag.belongsToMany(Card , {though: "CardTag"});
-Card.belongsToMany(User , {though: "UserCard"});
-User.belongsToMany(Card , {though: "UserCard"});
+Card.belongsToMany(Set , {through: "CardSet"});
+Set.belongsToMany(Card , {through: "CardSet"});
+Card.belongsToMany(Tag , {through: "CardTag"});
+Tag.belongsToMany(Card , {through: "CardTag"});
 
-//User Relationship
+//User Relationships
 User.hasMany(Deck);
 Deck.belongsTo(User);
+User.hasMany(UserCard);
+UserCard.belongsTo(User)
+
+//Deck and UserCard Relationship
+Deck.belongsToMany(UserCard , {through: "DeckCard"});
+UserCard.belongsToMany(Deck , {through: "DeckCard"});
 
 //Tag Self Relationship
-Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Tag', foreignKey: 'AssociationId', otherKey: 'TagId'});
-Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey: 'TagId', otherKey:'AssociationId'});
+Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey: 'AssociationId', otherKey: 'TagId'});
+Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Tag', foreignKey: 'TagId', otherKey:'AssociationId'});
 
 module.exports = {
     Card,
@@ -47,5 +52,6 @@ module.exports = {
     Tag,
     TagAssociation,
     User,
+    UserCard,
     Variation
 }
