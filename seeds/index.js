@@ -43,11 +43,11 @@ const seedAll = async () => {
     // await seedStyles();
     // console.log("\n----- STYLES SEEDED -----\n");
     
-    // await seedVariations();
-    // console.log("\n----- VARIATIONS SEEDED -----\n");
+    await seedVariations();
+    console.log("\n----- VARIATIONS SEEDED -----\n");
     
-    // await seedUserCards();
-    // console.log("\n----- USERCARDS SEEDED -----\n");
+    await seedUserCards();
+    console.log("\n----- USERCARDS SEEDED -----\n");
     
     // await seedTagAssociations();
     // console.log("\n----- TAGASSOCIATIONS SEEDED -----\n");

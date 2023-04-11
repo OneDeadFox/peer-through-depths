@@ -14,6 +14,9 @@ UserCard.init({
     stapleColor: {
         type: DataTypes.STRING,
     },
+    stapleType: {
+        type: DataTypes.STRING,
+    },
     favorite: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -22,9 +25,6 @@ UserCard.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    deckLocations: {
-        type: DataTypes.STRING,
-    }
 }, {
     sequelize
 });

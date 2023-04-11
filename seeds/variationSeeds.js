@@ -1,9 +1,75 @@
-const {X} = require('../models');
+const {Variation} = require('../models');
 
-const yData = [
-    
+const variationData = [
+    {
+        multiverseId: "1123",
+        tcgId: "456",
+        cardMarketId: "789",
+        variation: "standard",
+        scryfallUri: "www.somewhere.com",
+        imageUris: "www.somewhere.com, www.somewhereelse.com",
+        collectorNumber: "1",
+        digital: true,
+        rarity: "common",
+        reserved: true,
+        flavorText: "",
+        artist: "Me",
+        artistId: "987",
+        illustrationId: "654",
+        borderColor: "silver",
+        frame: "standard",
+        booster: true,
+        storySpotlight: true,
+        price: 1.99,
+        CardId: 1,
+    },
+    {
+        multiverseId: "1123",
+        tcgId: "456",
+        cardMarketId: "789",
+        variation: "oily",
+        scryfallUri: "www.somewhere.com",
+        imageUris: "www.somewhere.com, www.somewhereelse.com",
+        collectorNumber: "1",
+        rarity: "mythic",
+        reserved: true,
+        flavorText: "butts lol",
+        artist: "You",
+        artistId: "321",
+        illustrationId: "246",
+        borderColor: "black",
+        frame: "cool",
+        fullArt: true,
+        booster: true,
+        price: 7.99,
+        CardId: 2
+    },
+    // {
+    //     multiverseId: "",
+    //     tcgId: "",
+    //     cardMarketId: "",
+    //     variation: "",
+    //     scryfallUri: "",
+    //     imageUris: "",
+    //     collectorNumber: "",
+    //     digital: true,
+    //     rarity: "",
+    //     reserved: true,
+    //     flavorText: "",
+    //     artist: "",
+    //     artistId: "",
+    //     illustrationId: "",
+    //     borderColor: "",
+    //     frame: "",
+    //     fullArt: true,
+    //     textless: true,
+    //     booster: true,
+    //     storySpotlight: true,
+    //     price: 1.99,
+    //     CardId: 1,
+    // },
 ]
 
-const seedX = () => X.bulkCreate(yData);
+const seedVariation = () => Variation.bulkCreate(variationData);
 
-module.exports = seedX;
+module.exports = seedVariation;

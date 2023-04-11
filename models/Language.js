@@ -13,12 +13,6 @@ Language.init({
     language: {
         type: DataTypes.STRING,
     },
-    //I think we can just store the name in card
-    // name: {
-    //     type: DataTypes.STRING,
-    //     allowNull: false,
-    //     unique: true,
-    // },
     releaseDate: {
         type: DataTypes.DATE,
     },

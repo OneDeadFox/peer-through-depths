@@ -36,7 +36,6 @@ Variation.init({
     },
     reserved: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
         defaultValue: false,
     },
     flavorText: {
@@ -60,18 +59,19 @@ Variation.init({
     },
     fullArt: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
     },
     textless: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
     },
     booster: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
     },
     storySpotlight: {
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
     price: {
         type: DataTypes.DECIMAL,

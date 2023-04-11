@@ -1,9 +1,9 @@
-const {X} = require('../models');
+const {Language} = require('../models');
 
-const yData = [
+const languageData = [
     
 ]
 
-const seedX = () => X.bulkCreate(yData);
+const seedLanguage = () => Language.bulkCreate(languageData);
 
-module.exports = seedX;
+module.exports = seedLanguage;
