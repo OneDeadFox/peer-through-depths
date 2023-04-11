@@ -3,15 +3,17 @@ const {Status} = require('../models');
 const statusData = [
     {
         legalities: "Commander, Standard, Pauper",
-        game: "paper, digital",
+        games: "paper, digital",
         edhrecRank: 1,
         edhrecUri: "www.test.com",
+        CardId: 1,
     },
     {
         legalities: "Commander, Standard, Pauper",
-        game: "digital",
+        games: "digital",
         edhrecRank: 2,
         edhrecUri: "www.best.com",
+        CardId: 2,
     }
 ]
 
