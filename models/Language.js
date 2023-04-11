@@ -19,7 +19,7 @@ Language.init({
     imageUris: {
         type: DataTypes.STRING,
     },
-    prices: {
+    price: {
         type: DataTypes.DECIMAL,
     },
 }, {

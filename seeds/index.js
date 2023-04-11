@@ -34,8 +34,8 @@ const seedAll = async () => {
     await seedDecks();
     console.log("\n----- DECKS SEEDED -----\n");
 
-    // await seedLanguages();
-    // console.log("\n----- LANGUAGES SEEDED -----\n");
+    await seedLanguages();
+    console.log("\n----- LANGUAGES SEEDED -----\n");
     
     await seedStatuses();
     console.log("\n----- STATUSES SEEDED -----\n");
