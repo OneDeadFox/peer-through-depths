@@ -20,7 +20,7 @@ app.get("/*", (req, res) => {
     res.send("Failed to find");
 });
 
-sequelize.sync({force: true}).then(function() {
+sequelize.sync({force: false}).then(function() {
     app.listen(PORT, function() {
         console.log('App is listening to some dope tunes by Deltron ' + PORT);
     });

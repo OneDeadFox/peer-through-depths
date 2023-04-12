@@ -32,7 +32,14 @@ router.get("/currentUser", async (req, res) => {
         const user = await User.findByPk(tokenData.id, {
             include:[
                 {model: UserCard},
-                {model: Deck}
+                {
+                    model: Deck,
+                    include:[
+                        {
+                            model: UserCard,
+                        }
+                    ],
+                },
             ]
         });
 
@@ -58,7 +65,14 @@ router.get("/:id", async (req, res) => {
         const user = await User.findByPk(req.params.id, {
             include:[
                 {model: UserCard},
-                {model: Deck}
+                {
+                    model: Deck,
+                    include:[
+                        {
+                            model: UserCard,
+                        }
+                    ],
+                },
             ]
         });
 
@@ -110,6 +124,7 @@ router.post("/", async (req, res) => {
 });
 
 //PUT - update an existing user
+//works but you have to put your email and password in even if you only want to change your username
 router.put("/:id", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
@@ -187,7 +202,7 @@ router.post("/login", async (req, res) => {
                     [Op.or]: [{ username: req.body.login }, [{ email: req.body.login }]]
                 },
                 include:[
-                    {model: Card},
+                    {model: UserCard},
                     {model: Deck}
                 ]
             }
