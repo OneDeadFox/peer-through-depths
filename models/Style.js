@@ -13,10 +13,13 @@ Style.init({
     finish: {
         type: DataTypes.STRING,
     },
-    latout: {
+    layout: {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    price: {
+        type: DataTypes.DECIMAL(10, 2),
+    }
 }, {
     sequelize
 });

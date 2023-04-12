@@ -5,7 +5,7 @@ class TagAssociation extends Model { }
 
 TagAssociation.init({
     associationScore: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(3, 2),
         allowNull: false,
     },
 }, {

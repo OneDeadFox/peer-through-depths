@@ -4,18 +4,26 @@ const sequelize = require('../config/connection');
 class UserCard extends Model { }
 
 UserCard.init({
-    userTag: {
-        type: DataTypes.TEXT
-    },
-    userTagDescription: {
-        type: DataTypes.STRING
-    },
+    //I think allowing the user to input thier own tags for their own cards should be a thing.
+    // userTag: {
+    //     type: DataTypes.TEXT
+    // },
+    // userTagDescription: {
+    //     type: DataTypes.STRING
+    // },
     stapleColor: {
+        type: DataTypes.STRING,
+    },
+    stapleType: {
         type: DataTypes.STRING,
     },
     favorite: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
 }, {
     sequelize

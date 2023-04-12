@@ -4,8 +4,11 @@ const sequelize = require('../config/connection');
 class Deck extends Model { }
 
 Deck.init({
+    name: {
+        type: DataTypes.STRING,
+    },
     powerLevel: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
     },
     rating: {
         type: DataTypes.INTEGER,

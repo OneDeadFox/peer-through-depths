@@ -6,21 +6,9 @@ class Status extends Model { }
 Status.init({
     legalities: {
         type: DataTypes.STRING,
-        get() {
-            return this.getDataValue('legalities').split(',')
-        },
-        set(val) {
-            this.setDataValue('legalities',val.join(','));
-        },
     },
     games: {
         type: DataTypes.STRING,
-        get() {
-            return this.getDataValue('games').split(',')
-        },
-        set(val) {
-            this.setDataValue('games',val.join(','));
-        },
     },
     edhrecRank: {
         type: DataTypes.INTEGER,

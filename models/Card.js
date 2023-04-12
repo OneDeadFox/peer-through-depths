@@ -58,9 +58,6 @@ Card.init({
     target: {
         type: DataTypes.STRING,
     },
-    boardPlacement: {
-        type: DataTypes.STRING,
-    },
 }, {
     sequelize
 });
