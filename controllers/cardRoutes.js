@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const {Card, Deck, UserCard, User, Tag} = require('../models');
+const {Card, Deck, Set, UserCard, User, Tag} = require('../models');
 const jwt = require('jsonwebtoken');
 
 //GET all cards
@@ -27,6 +27,9 @@ router.get("/:id", async (req, res) => {
             include: [
                 {
                     model: Tag,
+                },
+                {
+                    model: Set,
                 }
             ]
         });
@@ -113,7 +116,8 @@ router.delete(`/:id`, async (req, res) => {
 //-----------------------USER CARD ROUTES----------------------
 
 //GET all userCards
-router.get("/UserCard/:id", async (req, res) => {
+//put this feature in user route
+router.get("/usercard/all/:id", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
@@ -146,7 +150,7 @@ router.get("/UserCard/:id", async (req, res) => {
 });
 
 //GET one userCards
-router.get("/UserCard/:id", async (req, res) => {
+router.get("/usercard/:id", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
@@ -155,16 +159,17 @@ router.get("/UserCard/:id", async (req, res) => {
 
     try {
         const tokenData = jwt.verify(token, process.env.JWT_SECRET);
-        const userCard = await UserCard.findByPk(req.params.id, {
+        const userCards = await UserCard.findByPk(req.params.id, {
             include: [
                 {model: User},
-                {model: Deck}
+                {model: Card},
+                {model: Deck},
             ]
         });
 
-        if(!findUser) {
+        if(!userCards) {
             return res.status(404).json({ msg: 'Failed to find this user card.'});
-        } else if (userCard.User.id != tokenData.id) {
+        } else if (userCards.User.id != tokenData.id) {
             return res.status(403).json({ msg: 'You can only view a user cards you own.'});
         } else {
             return res.json(userCards);
@@ -179,7 +184,7 @@ router.get("/UserCard/:id", async (req, res) => {
 });
 
 //POST a new userCard
-router.post("/UserCard/", async (req, res) => {
+router.post("/usercard/", async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
@@ -187,7 +192,15 @@ router.post("/UserCard/", async (req, res) => {
     }
 
     try {
-        const newUserCard = await UserCard.create(req.body);
+        const tokenData = jwt.verify(token, process.env.JWT_SECRET);
+        const newUserCard = await UserCard.create({
+            stapleColor: req.body.stapleColor,
+            stapleType: req.body.stapleType,
+            favorite: req.body.favorite,
+            quantity: req.body.quantity,
+            UserId: tokenData.id,
+            CardId: req.body.CardId,
+        });
 
         return res.json(newUserCard);
     } catch(err) {
@@ -200,7 +213,7 @@ router.post("/UserCard/", async (req, res) => {
 });
 
 //PUT - update an existing userCard
-router.put(`/UserCard/:id`, async (req, res) => {
+router.put(`/usercard/:id`, async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
@@ -235,7 +248,7 @@ router.put(`/UserCard/:id`, async (req, res) => {
 });
 
 //DELETE an existing userCard
-router.delete(`/UserCard/:id`, async (req, res) => {
+router.delete(`/usercard/:id`, async (req, res) => {
     const token = req.headers?.authorization?.split(" ")[1];
 
     if (!token) {
