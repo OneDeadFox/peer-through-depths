@@ -49,10 +49,10 @@ Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Association', foreignKey:
 Tag.belongsToMany(Tag, { through: TagAssociation, as: 'Tag', foreignKey: 'TagId', otherKey:'AssociationId'});
 
 //Variation Relationships
-Variation.belongsTo(Language);
-Language.hasMany(Variation);
-Variation.belongsTo(Style);
-Style.hasMany(Variation);
+Variation.hasMany(Language);
+Language.belongsTo(Variation);
+Language.hasMany(Style);
+Style.belongsTo(Language);
 
 module.exports = {
     Card,

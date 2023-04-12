@@ -20,7 +20,6 @@ const variationData = [
         frame: "standard",
         booster: true,
         storySpotlight: true,
-        price: 1.99,
         CardId: 1,
     },
     {
@@ -41,7 +40,6 @@ const variationData = [
         frame: "cool",
         fullArt: true,
         booster: true,
-        price: 7.99,
         CardId: 2
     },
     // {
@@ -65,7 +63,6 @@ const variationData = [
     //     textless: true,
     //     booster: true,
     //     storySpotlight: true,
-    //     price: 1.99,
     //     CardId: 1,
     // },
 ]

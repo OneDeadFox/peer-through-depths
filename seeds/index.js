@@ -33,18 +33,18 @@ const seedAll = async () => {
 
     await seedDecks();
     console.log("\n----- DECKS SEEDED -----\n");
-
-    await seedLanguages();
-    console.log("\n----- LANGUAGES SEEDED -----\n");
     
     await seedStatuses();
     console.log("\n----- STATUSES SEEDED -----\n");
     
-    await seedStyles();
-    console.log("\n----- STYLES SEEDED -----\n");
-    
     await seedVariations();
     console.log("\n----- VARIATIONS SEEDED -----\n");
+
+    await seedLanguages();
+    console.log("\n----- LANGUAGES SEEDED -----\n");
+    
+    await seedStyles();
+    console.log("\n----- STYLES SEEDED -----\n");
     
     await seedUserCards();
     console.log("\n----- USERCARDS SEEDED -----\n");

@@ -4,12 +4,12 @@ const sequelize = require('../config/connection');
 class Style extends Model { }
 
 Style.init({
-    // tcgId: {
-    //     type: DataTypes.STRING,
-    // },
-    // cardMarketId: {
-    //     type: DataTypes.STRING,
-    // },
+    tcgId: {
+        type: DataTypes.STRING,
+    },
+    cardMarketId: {
+        type: DataTypes.STRING,
+    },
     finish: {
         type: DataTypes.STRING,
     },
@@ -17,9 +17,9 @@ Style.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // price: {
-    //     type: DataTypes.DECIMAL(10, 2),
-    // }
+    price: {
+        type: DataTypes.DECIMAL(10, 2),
+    }
 }, {
     sequelize
 });
